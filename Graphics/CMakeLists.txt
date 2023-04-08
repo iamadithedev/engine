@@ -8,4 +8,5 @@ target_precompile_headers(${PROJECT_NAME}  PUBLIC stl.hpp)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 target_link_libraries(${PROJECT_NAME}   PUBLIC glad)
 
-target_sources(${PROJECT_NAME} PRIVATE object.cpp buffer.cpp buffer_data.cpp vertex_array.cpp shader.cpp program.cpp)
+target_sources(${PROJECT_NAME} PRIVATE object.cpp buffer.cpp buffer_data.cpp vertex_array.cpp shader.cpp program.cpp
+                                       render_pass.cpp)
