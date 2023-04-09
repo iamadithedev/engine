@@ -32,5 +32,7 @@ void Buffer::bind_at_location(uint32_t index) const
 
 void Buffer::data(const BufferData& data) const
 {
+    assert(data.ptr() != nullptr);
+
     glBufferData(_target, data.size(), data.ptr(), _usage);
 }
