@@ -8,7 +8,7 @@ class Time
 public:
     Time();
 
-    float total_time() const;
+    [[nodiscard]] float total_time() const;
 
 private:
     time_point _offset;
