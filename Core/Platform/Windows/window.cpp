@@ -2,7 +2,12 @@
 
 namespace windows
 {
-    bool Window::create(const std::string& title, int32_t width, int32_t height)
+    Window::Window(int32_t width, int32_t height)
+        : base::Window   { width, height }
+    {
+    }
+
+    bool Window::create(const std::string& title)
     {
         return false;
     }
@@ -13,10 +18,5 @@ namespace windows
 
     void Window::destroy() const
     {
-    }
-
-    bool Window::closing() const
-    {
-        return false;
     }
 }

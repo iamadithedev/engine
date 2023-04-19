@@ -1,11 +1,21 @@
 #include "window.hpp"
+#include "window_callbacks.hpp"
 
 namespace glfw
 {
-    bool Window::create(const std::string& title, int32_t width, int32_t height)
+    Window::Window(int32_t width, int32_t height)
+        : base::Window   { width, height }
     {
-        _handle  = glfwCreateWindow(width, height, title.c_str(), nullptr);
+    }
+
+    bool Window::create(const std::string& title)
+    {
+        _handle  = glfwCreateWindow(_width, _height, title.c_str(), nullptr);
                    glfwMakeContextCurrent(_handle);
+
+        glfwSetWindowUserPointer(_handle,    this);
+        glfwSetWindowSizeCallback(_handle,  WindowCallbacks::on_size);
+        glfwSetWindowCloseCallback(_handle, WindowCallbacks::on_close);
 
         return _handle != nullptr;
     }
@@ -18,10 +28,5 @@ namespace glfw
     void Window::destroy() const
     {
         glfwDestroyWindow(_handle);
-    }
-
-    bool Window::closing() const
-    {
-        return glfwWindowShouldClose(_handle);
     }
 }

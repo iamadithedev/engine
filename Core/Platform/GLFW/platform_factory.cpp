@@ -10,9 +10,9 @@ namespace glfw
         return platform;
     }
 
-    std::unique_ptr<base::Window> PlatformFactory::create_window()
+    std::unique_ptr<base::Window> PlatformFactory::create_window(int32_t width, int32_t height)
     {
-        auto   window = std::make_unique<Window>();
+        auto   window = std::make_unique<Window>(width, height);
         return window;
     }
 }
