@@ -1,5 +1,6 @@
 #pragma once
 
+#include "platform.hpp"
 #include "window.hpp"
 
 namespace base
@@ -9,6 +10,7 @@ namespace base
     public:
         virtual ~PlatformFactory() = default;
 
-        virtual std::unique_ptr<Window> create_window() = 0;
+        virtual std::unique_ptr<Platform> create_platform() = 0;
+        virtual std::unique_ptr<Window>   create_window()   = 0;
     };
 }

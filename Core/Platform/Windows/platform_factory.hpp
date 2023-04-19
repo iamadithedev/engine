@@ -2,7 +2,7 @@
 
 #include "base/platform_factory.hpp"
 
-namespace glfw
+namespace windows
 {
     class PlatformFactory final : public base::PlatformFactory
     {

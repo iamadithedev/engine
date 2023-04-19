@@ -2,7 +2,7 @@
 #include "platform.hpp"
 #include "window.hpp"
 
-namespace glfw
+namespace windows
 {
     std::unique_ptr<base::Platform> PlatformFactory::create_platform()
     {
