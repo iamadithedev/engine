@@ -9,13 +9,13 @@ public:
     [[nodiscard]] uint32_t   size() const;
 
     template<typename type>
-    static BufferData make_data_of_type(const std::vector<type>& buffer)
+    static BufferData make_data(const std::vector<type>& buffer)
     {
         return { buffer.data(), static_cast<uint32_t>(buffer.size() * sizeof(type)) };
     }
 
     template<typename type>
-    static BufferData make_data_of_type(const type* item)
+    static BufferData make_data(const type* item)
     {
         return { item, sizeof(type) };
     }

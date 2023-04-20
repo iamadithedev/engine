@@ -14,7 +14,6 @@ public:
     void data(const BufferData& data)     const;
 
     void bind_at_location(uint32_t index) const;
-    void bind()                           const;
 
 private:
     uint32_t _target;
