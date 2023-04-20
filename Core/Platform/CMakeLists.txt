@@ -9,4 +9,4 @@ target_link_libraries(${PROJECT_NAME}      PUBLIC glfw)
 
 target_sources(${PROJECT_NAME} PRIVATE GLFW/platform.cpp GLFW/window.cpp GLFW/platform_factory.cpp GLFW/window_callbacks.cpp)
 target_sources(${PROJECT_NAME} PRIVATE Windows/platform.cpp Windows/window.cpp Windows/platform_factory.cpp)
-target_sources(${PROJECT_NAME} PRIVATE Base/window.cpp Base/platform.cpp)
+target_sources(${PROJECT_NAME} PRIVATE Base/window.cpp)

@@ -3,8 +3,8 @@
 namespace glfw
 {
     Platform::Platform(int32_t major, int32_t minor, int32_t samples)
-        : _major { major }
-        , _minor{ minor }
+        : _major   { major }
+        , _minor   { minor }
         , _samples { samples }
     {
     }
@@ -21,7 +21,7 @@ namespace glfw
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, _major);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, _minor);
 
-        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // TODO remove this, should be enable by default
 
         return true;
     }

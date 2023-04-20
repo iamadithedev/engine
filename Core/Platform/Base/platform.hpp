@@ -11,7 +11,6 @@ namespace base
 
         virtual void update()  const = 0;
         virtual void release() const = 0;
-
         virtual void vsync()   const = 0;
     };
 }
