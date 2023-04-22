@@ -2,7 +2,7 @@
 
 #include "shader.hpp"
 
-class Program : public Object
+class Program final : public Object
 {
 public:
     void create();

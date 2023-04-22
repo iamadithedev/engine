@@ -3,7 +3,7 @@
 #include "object.hpp"
 #include "buffer_data.hpp"
 
-class Buffer : public Object
+class Buffer final : public Object
 {
 public:
     Buffer(uint32_t target, uint32_t usage);

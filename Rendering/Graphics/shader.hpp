@@ -2,7 +2,7 @@
 
 #include "object.hpp"
 
-class Shader : public Object
+class Shader final : public Object
 {
 public:
     Shader(std::string file, uint32_t type);

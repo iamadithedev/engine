@@ -1,5 +1,3 @@
-add_subdirectory(Graphics)
-
 project(Rendering)
 
 add_library(${PROJECT_NAME})

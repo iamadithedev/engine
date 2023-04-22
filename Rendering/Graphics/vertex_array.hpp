@@ -3,7 +3,7 @@
 #include "object.hpp"
 #include "vertex_attribute.hpp"
 
-class VertexArray : public Object
+class VertexArray final : public Object
 {
 public:
     void create();
