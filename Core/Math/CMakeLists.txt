@@ -8,4 +8,4 @@ target_precompile_headers(${PROJECT_NAME}  PUBLIC stl.hpp)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 target_link_libraries(${PROJECT_NAME}   PUBLIC glm)
 
-target_sources(${PROJECT_NAME} PRIVATE vec3.cpp)
+target_sources(${PROJECT_NAME} PRIVATE vec3.cpp vec2.cpp)
