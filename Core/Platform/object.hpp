@@ -2,11 +2,11 @@
 
 namespace base
 {
-    template <typename type_t>
+    template <typename type>
     class Object
     {
     public:
-        [[nodiscard]] type_t handle() const
+        [[nodiscard]] type handle() const
         {
             return _handle;
         }
@@ -16,6 +16,6 @@ namespace base
         {
         }
 
-        type_t _handle;
+        type _handle;
     };
 }

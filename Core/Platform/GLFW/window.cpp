@@ -13,7 +13,7 @@ namespace glfw
         _handle  = glfwCreateWindow(_width, _height, title.c_str(), nullptr);
                    glfwMakeContextCurrent(_handle);
 
-        glfwSetWindowUserPointer(_handle,    this);
+        glfwSetWindowUserPointer(_handle,   this);
         glfwSetWindowSizeCallback(_handle,  WindowCallbacks::on_size);
         glfwSetWindowCloseCallback(_handle, WindowCallbacks::on_close);
 
