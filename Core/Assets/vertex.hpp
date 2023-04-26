@@ -13,7 +13,7 @@ namespace vertex
 
     struct texture
     {
-        vec3 position;
+        vec2 position;
         vec2 uv;
     };
 }

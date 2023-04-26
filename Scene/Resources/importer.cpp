@@ -1,9 +1,9 @@
 #include "importer.hpp"
 
-mesh_geometry<vertex::diffuse> Importer::load(const std::string& file)
+MeshGeometry<vertex::diffuse> Importer::load(const std::string& file)
 {
-    Assimp::Importer               importer;
-    mesh_geometry<vertex::diffuse> geometry;
+    Assimp::Importer              importer;
+    MeshGeometry<vertex::diffuse> geometry;
 
     const aiScene* scene = importer.ReadFile(file, 0);
 
@@ -20,18 +20,18 @@ mesh_geometry<vertex::diffuse> Importer::load(const std::string& file)
                 const aiVector3D& position = mesh->mVertices[j];
                 const aiVector3D& normal   = mesh->mNormals[j];
 
-                geometry.vertices.push_back({{ position.x, position.y, position.z },
-                                                      { normal.x, normal.y, normal.z }});
+                vertex::diffuse vertex {{ position.x, position.y, position.z },
+                                         { normal.x, normal.y, normal.z }};
+
+                geometry.add_vertex(vertex);
             }
 
             for (uint32_t j = 0; j < mesh->mNumFaces; j++)
             {
                 const aiFace& face = mesh->mFaces[j];
+                assert(face.mNumIndices == 3);
 
-                for (uint32_t f = 0; f < face.mNumIndices; f++)
-                {
-                    geometry.indices.push_back(face.mIndices[f]);
-                }
+                geometry.add_face(face.mIndices[0], face.mIndices[1], face.mIndices[2]);
             }
         }
     }
