@@ -23,7 +23,8 @@ void Buffer::data(const BufferData& data) const
     assert(data.ptr() != nullptr);
     assert(_handle    != 0);
 
-    glBindBuffer(_target, _handle);
+    bind();
+
     glBufferData(_target, data.size(), data.ptr(), _usage);
 }
 
@@ -32,4 +33,9 @@ void Buffer::bind_at_location(uint32_t index) const
     assert(_target == GL_UNIFORM_BUFFER);
 
     glBindBufferBase(_target, index, _handle);
+}
+
+void Buffer::bind() const
+{
+    glBindBuffer(_target, _handle);
 }
