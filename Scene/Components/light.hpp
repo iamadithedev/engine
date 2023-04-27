@@ -10,6 +10,8 @@ public:
 
     void color(const rgb& color);
 
+    [[nodiscard]] const rgb& color() const;
+
 private:
     vec3  _position;
     float _temp;
