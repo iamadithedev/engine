@@ -1,5 +1,10 @@
 #include "physics_debug.hpp"
 
+PhysicsDebug::PhysicsDebug()
+    : _index { }
+{
+}
+
 void PhysicsDebug::drawLine(const btVector3& a, const btVector3& b, const btVector3& color)
 {
     rgb rgb { color.x(), color.y(), color.z() };
@@ -10,7 +15,7 @@ void PhysicsDebug::drawLine(const btVector3& a, const btVector3& b, const btVect
     _geometry.add_line(_index++, _index++);
 }
 
-int PhysicsDebug::getDebugMode() const
+int32_t PhysicsDebug::getDebugMode() const
 {
     return btIDebugDraw::DBG_DrawWireframe;
 }

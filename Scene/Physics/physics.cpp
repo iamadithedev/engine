@@ -63,7 +63,7 @@ void Physics::add_collision(int32_t index, btCollisionShape* shape, const vec3& 
 void Physics::debug()
 {
     _world->debugDrawWorld();
-    _debug->flushLines(); // just for collision world
+    _world->getDebugDrawer()->flushLines(); // just for collision world
 }
 
 PhysicsDebug* Physics::physics_debug() const
