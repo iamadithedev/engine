@@ -6,6 +6,20 @@ template <typename vertex>
 class MeshGeometry
 {
 public:
+    MeshGeometry()
+        : _ready { }
+    {
+    }
+
+    void begin()
+    {
+        _ready = false;
+    }
+    void end()
+    {
+        _ready = true;
+    }
+
     void add_vertex(const vertex& vert)
     {
         _vertices.push_back(vert);
@@ -25,10 +39,12 @@ public:
 
     [[nodiscard]] const std::vector<vertex>&   vertices() const
     {
+        assert(_ready);
         return _vertices;
     }
     [[nodiscard]] const std::vector<uint32_t>& indices()  const
     {
+        assert(_ready);
         return _indices;
     }
 
@@ -36,9 +52,13 @@ public:
     {
         _vertices.clear();
         _indices.clear();
+
+        _ready = false;
     }
 
 private:
     std::vector<vertex>   _vertices;
     std::vector<uint32_t> _indices;
+
+    bool _ready;
 };

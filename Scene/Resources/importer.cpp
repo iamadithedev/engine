@@ -2,8 +2,10 @@
 
 MeshGeometry<vertex::diffuse> Importer::load(const std::string& file)
 {
-    Assimp::Importer              importer;
+    Assimp::Importer importer;
+
     MeshGeometry<vertex::diffuse> geometry;
+    geometry.begin();
 
     const aiScene* scene = importer.ReadFile(file, 0);
 
@@ -36,5 +38,6 @@ MeshGeometry<vertex::diffuse> Importer::load(const std::string& file)
         }
     }
 
+           geometry.end();
     return geometry;
 }

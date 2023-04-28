@@ -11,7 +11,8 @@ public:
     void create();
     void destroy();
 
-    void data(const BufferData& data)     const;
+    void     data(const BufferData& data)                     const;
+    void sub_data(const BufferData& data, int32_t offset = 0) const;
 
     void bind_at_location(uint32_t index) const;
     void bind()                           const;

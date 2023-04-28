@@ -28,6 +28,16 @@ void Buffer::data(const BufferData& data) const
     glBufferData(_target, data.size(), data.ptr(), _usage);
 }
 
+void Buffer::sub_data(const BufferData& data, int32_t offset) const
+{
+    assert(data.ptr() != nullptr);
+    assert(_handle    != 0);
+
+    bind();
+
+    glBufferSubData(_target, offset, data.size(), data.ptr());
+}
+
 void Buffer::bind_at_location(uint32_t index) const
 {
     assert(_target == GL_UNIFORM_BUFFER);

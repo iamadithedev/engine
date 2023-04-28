@@ -5,7 +5,6 @@ Physics::Physics()
     , _dispatcher { }
     , _broadphase { }
     , _world { }
-    , _debug { }
 {
 }
 
@@ -17,15 +16,10 @@ void Physics::init()
     _broadphase = new btDbvtBroadphase();
 
     _world = new btCollisionWorld { _dispatcher, _broadphase, _config };
-
-    _debug = new PhysicsDebug();
-    _world->setDebugDrawer(_debug);
 }
 
 void Physics::release()
 {
-    delete _debug;
-
     delete _world;
     delete _broadphase;
     delete _dispatcher;
@@ -60,13 +54,13 @@ void Physics::add_collision(int32_t index, btCollisionShape* shape, const vec3& 
     _world->addCollisionObject(collision);
 }
 
+void Physics::add_debug(btIDebugDraw* debug)
+{
+    _world->setDebugDrawer(debug);
+}
+
 void Physics::debug()
 {
     _world->debugDrawWorld();
     _world->getDebugDrawer()->flushLines(); // just for collision world
-}
-
-PhysicsDebug* Physics::physics_debug() const
-{
-    return _debug;
 }

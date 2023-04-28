@@ -5,5 +5,12 @@
 class Material
 {
 public:
-    rgb diffuse;
+    explicit Material(const rgb& diffuse);
+
+    void diffuse(const rgb& diffuse);
+
+    [[nodiscard]] const rgb& diffuse() const;
+
+private:
+    rgb _diffuse;
 };
