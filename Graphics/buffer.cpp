@@ -20,20 +20,18 @@ void Buffer::destroy()
 
 void Buffer::data(const BufferData& data) const
 {
-    assert(data.ptr() != nullptr);
-    assert(_handle    != 0);
-
     bind();
+
+    assert(data.ptr() != nullptr);
 
     glBufferData(_target, data.size(), data.ptr(), _usage);
 }
 
 void Buffer::sub_data(const BufferData& data, int32_t offset) const
 {
-    assert(data.ptr() != nullptr);
-    assert(_handle    != 0);
-
     bind();
+
+    assert(data.ptr() != nullptr);
 
     glBufferSubData(_target, offset, data.size(), data.ptr());
 }
@@ -47,5 +45,7 @@ void Buffer::bind_at_location(uint32_t index) const
 
 void Buffer::bind() const
 {
+    assert(_handle != 0);
+
     glBindBuffer(_target, _handle);
 }

@@ -7,9 +7,19 @@ Light::Light(const vec3 &position, const rgb& color)
 {
 }
 
+void Light::position(const vec3& position)
+{
+    _position = position;
+}
+
 void Light::color(const rgb& color)
 {
     _color = color;
+}
+
+const vec3& Light::position() const
+{
+    return _position;
 }
 
 const rgb& Light::color() const

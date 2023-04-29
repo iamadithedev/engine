@@ -8,6 +8,12 @@ TextureData::TextureData(uchar* ptr, int32_t width, int32_t height, int32_t form
 {
 }
 
+void TextureData::release()
+{
+    assert(_ptr != nullptr);
+    std::free(_ptr);
+}
+
 uchar* TextureData::ptr() const
 {
     return _ptr;
