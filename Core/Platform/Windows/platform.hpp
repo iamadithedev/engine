@@ -7,8 +7,7 @@ namespace windows
     class Platform final : public base::Platform
     {
     public:
-        [[nodiscard]] bool init() const final;
-
+        bool init()    const final;
         void update()  const final;
         void release() const final;
         void vsync()   const final;

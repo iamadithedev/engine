@@ -9,8 +9,7 @@ namespace glfw
     public:
         explicit Platform(int32_t major = 3, int32_t minor = 3, int32_t samples = 4);
 
-        [[nodiscard]] bool init() const final;
-
+        bool init()    const final;
         void update()  const final;
         void release() const final;
         void vsync()   const final;
