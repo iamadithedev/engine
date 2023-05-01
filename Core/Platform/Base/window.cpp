@@ -2,17 +2,16 @@
 
 namespace base
 {
-    Window::Window(int32_t width, int32_t height)
-        : _width  { width  }
-        , _height { height }
+    Window::Window(std::string title, const window_size& size)
+        : _title  { std::move(title) }
+        , _size   { size }
         , _closed { }
     {
     }
 
-    void Window::resize(int32_t width, int32_t height)
+    void Window::resize(const window_size& size)
     {
-        _width  = width;
-        _height = height;
+        _size = size;
     }
 
     void Window::close()
@@ -20,14 +19,9 @@ namespace base
         _closed = true;
     }
 
-    int32_t Window::width() const
+    const window_size& Window::size() const
     {
-        return _width;
-    }
-
-    int32_t Window::height() const
-    {
-        return _height;
+        return _size;
     }
 
     bool Window::closed() const

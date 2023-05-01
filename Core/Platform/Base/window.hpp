@@ -1,30 +1,29 @@
 #pragma once
 
+#include "window_size.hpp"
+
 namespace base
 {
     class Window
     {
     public:
-        Window(int32_t width, int32_t height);
+        Window(std::string title, const window_size& size);
 
         virtual ~Window() = default;
 
-        virtual bool create(const std::string& title) = 0;
-
+        virtual bool create()        = 0;
         virtual void update()  const = 0;
         virtual void destroy() const = 0;
 
-        void resize(int32_t width, int32_t height);
+        void resize(const window_size& size);
         void close();
 
-        [[nodiscard]] int32_t width()  const;
-        [[nodiscard]] int32_t height() const;
-
-        [[nodiscard]] bool    closed() const;
+        [[nodiscard]] const window_size& size() const;
+        [[nodiscard]] bool             closed() const;
 
     protected:
-        int32_t _width;
-        int32_t _height;
+        std::string _title;
+        window_size _size;
 
     private:
         bool _closed;

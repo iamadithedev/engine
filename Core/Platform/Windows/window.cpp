@@ -2,12 +2,12 @@
 
 namespace windows
 {
-    Window::Window(int32_t width, int32_t height)
-        : base::Window   { width, height }
+    Window::Window(const std::string& title, const window_size& size)
+        : base::Window { title, size }
     {
     }
 
-    bool Window::create(const std::string& title)
+    bool Window::create()
     {
         return false;
     }

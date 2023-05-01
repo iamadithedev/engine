@@ -3,14 +3,14 @@
 
 namespace glfw
 {
-    Window::Window(int32_t width, int32_t height)
-        : base::Window   { width, height }
+    Window::Window(const std::string& title, const window_size& size)
+        : base::Window { title, size }
     {
     }
 
-    bool Window::create(const std::string& title)
+    bool Window::create()
     {
-        _handle  = glfwCreateWindow(_width, _height, title.c_str(), nullptr);
+        _handle  = glfwCreateWindow(_size.width, _size.height, _title.c_str(), nullptr);
                    glfwMakeContextCurrent(_handle);
 
         glfwSetWindowUserPointer(_handle,   this);

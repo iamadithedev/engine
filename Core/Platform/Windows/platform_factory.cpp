@@ -10,9 +10,9 @@ namespace windows
         return platform;
     }
 
-    std::unique_ptr<base::Window> PlatformFactory::create_window(int32_t width, int32_t height)
+    std::unique_ptr<base::Window> PlatformFactory::create_window(const std::string& title, const window_size& size)
     {
-        auto   window = std::make_unique<Window>(width, height);
+        auto   window = std::make_unique<Window>(title, size);
         return window;
     }
 }
