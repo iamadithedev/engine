@@ -1,7 +1,5 @@
 #include "texture_importer.hpp"
 
-#include <stb_image.h>
-
 TextureData TextureImporter::load(const std::string& file)
 {
     int32_t width, height, channels;

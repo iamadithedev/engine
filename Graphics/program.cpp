@@ -26,11 +26,15 @@ void Program::link() const
 
 void Program::attach(const Shader* shader) const
 {
+    assert(shader != nullptr);
+
     glAttachShader(_handle, shader->handle());
 }
 
 void Program::detach(const Shader* shader) const
 {
+    assert(shader != nullptr);
+
     glDetachShader(_handle, shader->handle());
 }
 

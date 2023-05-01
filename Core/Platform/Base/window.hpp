@@ -26,6 +26,7 @@ namespace base
         int32_t _width;
         int32_t _height;
 
+    private:
         bool _closed;
     };
 }
