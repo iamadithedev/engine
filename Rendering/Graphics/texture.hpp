@@ -8,8 +8,8 @@ class Texture final : public Object
 public:
     explicit Texture(uint32_t target);
 
-    void create();
-    void destroy();
+    void create()  final;
+    void destroy() final;
 
     void source(const TextureData& data) const;
     void bind() const;

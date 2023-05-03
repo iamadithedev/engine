@@ -7,8 +7,8 @@ class Shader final : public Object
 public:
     Shader(std::string file, uint32_t type);
 
-    void create();
-    void destroy();
+    void create()  final;
+    void destroy() final;
 
     void source(const char* data) const;
 

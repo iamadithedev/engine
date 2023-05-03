@@ -8,8 +8,8 @@ class Buffer final : public Object
 public:
     Buffer(uint32_t target, uint32_t usage);
 
-    void create();
-    void destroy();
+    void create()  final;
+    void destroy() final;
 
     void     data(const BufferData& data)                     const;
     void sub_data(const BufferData& data, int32_t offset = 0) const;

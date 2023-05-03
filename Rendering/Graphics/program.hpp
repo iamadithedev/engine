@@ -5,8 +5,8 @@
 class Program final : public Object
 {
 public:
-    void create();
-    void destroy();
+    void create()  final;
+    void destroy() final;
 
     void bind() const;
     void link() const;
