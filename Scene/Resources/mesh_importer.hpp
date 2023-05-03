@@ -4,11 +4,13 @@
 
 struct aiMesh;
 
+using triangle = mesh_primitive<3>;
+
 class MeshImporter
 {
 public:
-    static MeshGeometry<vertex::diffuse> load(const std::string& file);
+    static MeshGeometry<mesh_vertex::diffuse, triangle> load(const std::string& file);
 
 private:
-    static MeshGeometry<vertex::diffuse> load(const aiMesh* mesh);
+    static MeshGeometry<mesh_vertex::diffuse, triangle> load(const aiMesh* mesh);
 };

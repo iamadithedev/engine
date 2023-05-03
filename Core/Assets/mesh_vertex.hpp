@@ -4,7 +4,7 @@
 #include "vec2.hpp"
 #include "rgb.hpp"
 
-namespace vertex
+namespace mesh_vertex
 {
     struct debug
     {

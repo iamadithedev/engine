@@ -1,10 +1,10 @@
 #include "mesh_importer.hpp"
 
-MeshGeometry<vertex::diffuse> MeshImporter::load(const std::string& file)
+MeshGeometry<mesh_vertex::diffuse, triangle> MeshImporter::load(const std::string& file)
 {
     Assimp::Importer importer;
 
-    MeshGeometry<vertex::diffuse> geometry;
+    MeshGeometry<mesh_vertex::diffuse, triangle> geometry;
 
     const aiScene* scene = importer.ReadFile(file, 0);
 
@@ -23,9 +23,9 @@ MeshGeometry<vertex::diffuse> MeshImporter::load(const std::string& file)
     return geometry;
 }
 
-MeshGeometry<vertex::diffuse> MeshImporter::load(const aiMesh* mesh)
+MeshGeometry<mesh_vertex::diffuse, triangle> MeshImporter::load(const aiMesh* mesh)
 {
-    MeshGeometry<vertex::diffuse> geometry;
+    MeshGeometry<mesh_vertex::diffuse, triangle> geometry;
     geometry.begin();
 
     for (uint32_t j = 0; j < mesh->mNumVertices; j++)
@@ -33,8 +33,8 @@ MeshGeometry<vertex::diffuse> MeshImporter::load(const aiMesh* mesh)
         const aiVector3D& position = mesh->mVertices[j];
         const aiVector3D& normal   = mesh->mNormals[j];
 
-        vertex::diffuse vertex {{ position.x, position.y, position.z },
-                                 { normal.x, normal.y, normal.z }};
+        mesh_vertex::diffuse vertex {{ position.x, position.y, position.z },
+                                     { normal.x, normal.y, normal.z }};
 
         geometry.add_vertex(vertex);
     }
@@ -44,7 +44,7 @@ MeshGeometry<vertex::diffuse> MeshImporter::load(const aiMesh* mesh)
         const aiFace& face = mesh->mFaces[j];
         assert(face.mNumIndices == 3);
 
-        geometry.add_face(face.mIndices[0], face.mIndices[1], face.mIndices[2]);
+        geometry.add_face({ face.mIndices[0], face.mIndices[1], face.mIndices[2] });
     }
 
     geometry.end();

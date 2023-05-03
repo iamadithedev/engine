@@ -1,8 +1,9 @@
 #pragma once
 
-#include "vertex.hpp"
+#include "mesh_vertex.hpp"
+#include "mesh_primitive.hpp"
 
-template <typename vertex>
+template <typename _vertex, typename _primitive>
 class MeshGeometry
 {
 public:
@@ -17,48 +18,43 @@ public:
     }
     void end()
     {
+        assert(!_vertices.empty());
+        assert(!_faces.empty());
+
         _ready = true;
     }
 
-    void add_vertex(const vertex& vert)
+    void add_vertex(const _vertex& vertex)
     {
-        _vertices.push_back(vert);
+        _vertices.push_back(vertex);
+    }
+    void add_face(const _primitive& primitive)
+    {
+        _faces.push_back(primitive);
     }
 
-    void add_face(uint32_t a, uint32_t b, uint32_t c)
-    {
-        _indices.push_back(a);
-        _indices.push_back(b);
-        _indices.push_back(c);
-    }
-    void add_line(uint32_t a, uint32_t b)
-    {
-        _indices.push_back(a);
-        _indices.push_back(b);
-    }
-
-    [[nodiscard]] const std::vector<vertex>&   vertices() const
+    [[nodiscard]] const std::vector<_vertex>&    vertices() const
     {
         assert(_ready);
         return _vertices;
     }
-    [[nodiscard]] const std::vector<uint32_t>& indices()  const
+    [[nodiscard]] const std::vector<_primitive>& faces()    const
     {
         assert(_ready);
-        return _indices;
+        return _faces;
     }
 
     void reset()
     {
         _vertices.clear();
-        _indices.clear();
+        _faces.clear();
 
         _ready = false;
     }
 
 private:
-    std::vector<vertex>   _vertices;
-    std::vector<uint32_t> _indices;
+    std::vector<_vertex>    _vertices;
+    std::vector<_primitive> _faces;
 
     bool _ready;
 };
