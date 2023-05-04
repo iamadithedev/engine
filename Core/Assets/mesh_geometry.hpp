@@ -11,7 +11,7 @@ public:
 
     void begin()
     {
-        _ready = false;
+        assert(!_ready);
     }
     void end()
     {

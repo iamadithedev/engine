@@ -10,6 +10,7 @@ namespace base
         virtual bool init()    const = 0;
         virtual void update()  const = 0;
         virtual void release() const = 0;
+
         virtual void vsync()   const = 0;
     };
 }

@@ -10,6 +10,7 @@ namespace windows
         bool init()    const final;
         void update()  const final;
         void release() const final;
+
         void vsync()   const final;
     };
 }

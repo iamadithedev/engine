@@ -11,10 +11,10 @@ public:
     void release();
     void debug();
 
-    [[nodiscard]] btCollisionWorld::ClosestRayResultCallback cast(const ray& ray, float distance) const;
-
     void add_collision(int32_t index, btCollisionShape* shape, const vec3& position);
     void add_debug(btIDebugDraw* debug);
+
+    [[nodiscard]] btCollisionWorld::ClosestRayResultCallback cast(const ray& ray, float distance) const;
 
 private:
     btCollisionConfiguration* _config;

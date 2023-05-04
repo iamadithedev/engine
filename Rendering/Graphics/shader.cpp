@@ -20,6 +20,8 @@ void Shader::destroy()
 
 void Shader::source(const char* data) const
 {
+    assert(data != nullptr);
+
     glShaderSource(_handle, 1, &data, nullptr);
 
     compile();

@@ -1,25 +1,29 @@
 #pragma once
 
+#include "ray.hpp"
+#include "vec2.hpp"
+
 class Camera
 {
 public:
-    Camera(float field_of_view, float aspect_ratio, float near_plane = 0.1f, float far_plane = 100.0f);
+    explicit Camera(float field_of_view, float z_near = 0.1f, float z_far = 100.0f);
 
     void resize(float width, float height);
 
     void field_of_view(float value);
-    void near_plane(float value);
-    void far_plane(float value);
+    void z_near(float value);
+    void z_far(float value);
 
     [[nodiscard]] const glm::mat4& projection() const;
+    [[nodiscard]] float         field_of_view() const;
 
-    [[nodiscard]] float field_of_view() const;
+    [[nodiscard]] ray screen_to_world(const glm::mat4& view, const vec2& position) const;
 
 private:
     glm::mat4 _projection;
+    glm::vec4 _viewport;
 
     float _field_of_view;
-    float _aspect_ratio;
-    float _near_plane;
-    float _far_plane;
+    float _z_near;
+    float _z_far;
 };
