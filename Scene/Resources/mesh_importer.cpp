@@ -1,10 +1,9 @@
 #include "mesh_importer.hpp"
 
-MeshGeometry<mesh_vertex::diffuse, triangle> MeshImporter::load(const std::string& file)
+triangle_geometry MeshImporter::load(const std::string& file)
 {
-    Assimp::Importer importer;
-
-    MeshGeometry<mesh_vertex::diffuse, triangle> geometry;
+    Assimp::Importer  importer;
+    triangle_geometry geometry;
 
     const aiScene* scene = importer.ReadFile(file, 0);
 
@@ -23,9 +22,9 @@ MeshGeometry<mesh_vertex::diffuse, triangle> MeshImporter::load(const std::strin
     return geometry;
 }
 
-MeshGeometry<mesh_vertex::diffuse, triangle> MeshImporter::load(const aiMesh* mesh)
+triangle_geometry MeshImporter::load(const aiMesh* mesh)
 {
-    MeshGeometry<mesh_vertex::diffuse, triangle> geometry;
+    triangle_geometry geometry;
     geometry.begin();
 
     for (uint32_t j = 0; j < mesh->mNumVertices; j++)

@@ -1,16 +1,13 @@
 #pragma once
 
-#include "mesh_geometry.hpp"
+#include "mesh_utils.hpp"
 
 struct aiMesh;
-
-using triangle = mesh_primitive<3>;
-
-class MeshImporter
+class  MeshImporter
 {
 public:
-    static MeshGeometry<mesh_vertex::diffuse, triangle> load(const std::string& file);
+    static triangle_geometry load(const std::string& file);
 
 private:
-    static MeshGeometry<mesh_vertex::diffuse, triangle> load(const aiMesh* mesh);
+    static triangle_geometry load(const aiMesh* mesh);
 };

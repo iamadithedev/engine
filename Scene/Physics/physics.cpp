@@ -26,14 +26,14 @@ void Physics::release()
     delete _config;
 }
 
-btCollisionWorld::ClosestRayResultCallback Physics::cast(const ray&ray, float distance)
+btCollisionWorld::ClosestRayResultCallback Physics::cast(const ray& ray, float distance) const
 {
-    btVector3 origin    { ray.origin.x, ray.origin.y, ray.origin.z };
+    btVector3 origin    { ray.origin.x,    ray.origin.y,    ray.origin.z };
     btVector3 direction { ray.direction.x, ray.direction.y, ray.direction.z };
 
     btVector3 target = origin + direction * distance;
-
     btCollisionWorld::ClosestRayResultCallback hit { origin, target };
+
     _world->rayTest(origin, target, hit);
 
     return hit;
@@ -45,13 +45,13 @@ void Physics::add_collision(int32_t index, btCollisionShape* shape, const vec3& 
     transform.setIdentity();
     transform.setOrigin({ position.x, position.y, position.z });
 
-    auto collision = new btCollisionObject();
+    auto object = new btCollisionObject();
 
-    collision->setCollisionShape(shape);
-    collision->setWorldTransform(transform);
-    collision->setUserIndex(index);
+    object->setCollisionShape(shape);
+    object->setWorldTransform(transform);
+    object->setUserIndex(index);
 
-    _world->addCollisionObject(collision);
+    _world->addCollisionObject(object);
 }
 
 void Physics::add_debug(btIDebugDraw* debug)

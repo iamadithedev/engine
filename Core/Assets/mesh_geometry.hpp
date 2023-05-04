@@ -1,8 +1,5 @@
 #pragma once
 
-#include "mesh_vertex.hpp"
-#include "mesh_primitive.hpp"
-
 template <typename _vertex, typename _primitive>
 class MeshGeometry
 {
