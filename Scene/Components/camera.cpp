@@ -1,10 +1,17 @@
 #include "camera.hpp"
 
+Camera::Camera()
+    : _viewport { }
+    , _type     { Type::Ortho }
+{
+}
+
 Camera::Camera(float field_of_view, float z_near, float z_far)
     : _viewport      { }
     , _field_of_view { field_of_view }
     , _z_near { z_near }
     , _z_far  { z_far  }
+    , _type   { Type::Perspective }
 {
 }
 
@@ -15,28 +22,30 @@ const glm::mat4& Camera::projection() const
 
 void Camera::resize(float width, float height)
 {
-    float  aspect_ratio = width / height;
-    assert(aspect_ratio > 0.0f);
-
-    _projection = glm::perspective(glm::radians(_field_of_view), aspect_ratio, _z_near, _z_far);
-    //_projection = glm::ortho(_data.data[0], _data.data[1], _data.data[2], _data.data[3]);
-
     _viewport.z = width;
     _viewport.w = height;
+
+    _type == Type::Perspective ? compute_perspective() : compute_ortho();
 }
 
 void Camera::field_of_view(float value)
 {
+    assert(_type == Type::Perspective);
+
     _field_of_view = value;
 }
 
 void Camera::z_near(float value)
 {
+    assert(_type == Type::Perspective);
+
     _z_near = value;
 }
 
 void Camera::z_far(float value)
 {
+    assert(_type == Type::Perspective);
+
     _z_far = value;
 }
 
@@ -55,4 +64,17 @@ ray Camera::screen_to_world(const glm::mat4& view, const vec2& position) const
     glm::vec3 direction = glm::normalize(end - start);
 
     return { { start.x, start.y, start.z }, { direction.x, direction.y, direction.z } };
+}
+
+void Camera::compute_perspective()
+{
+    float  aspect_ratio = _viewport.z / _viewport.w;
+    assert(aspect_ratio > 0.0f);
+
+    _projection = glm::perspective(glm::radians(_field_of_view), aspect_ratio, _z_near, _z_far);
+}
+
+void Camera::compute_ortho()
+{
+    _projection = glm::ortho(_viewport.x, _viewport.z, _viewport.y, _viewport.w);
 }
