@@ -2,7 +2,8 @@
 
 Buffer::Buffer(uint32_t target, uint32_t usage)
     : _target { target }
-    , _usage  { usage }
+    , _usage  { usage  }
+    , _initialized   { }
 {
 }
 
@@ -18,20 +19,23 @@ void Buffer::destroy()
     glDeleteBuffers(1, &_handle);
 }
 
-void Buffer::data(const BufferData& data) const
+void Buffer::data(const BufferData& data)
 {
     bind();
 
     assert(data.ptr() != nullptr);
 
     glBufferData(_target, data.size(), data.ptr(), _usage);
+
+    _initialized = true;
 }
 
 void Buffer::sub_data(const BufferData& data, int32_t offset) const
 {
     bind();
 
-    assert(data.ptr() != nullptr);
+    assert(_initialized == true);
+    assert(data.ptr()   != nullptr);
 
     glBufferSubData(_target, offset, data.size(), data.ptr());
 }
