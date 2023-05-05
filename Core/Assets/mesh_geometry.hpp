@@ -4,8 +4,7 @@ template <typename _vertex, typename _primitive>
 class MeshGeometry
 {
 public:
-    MeshGeometry()
-        : _ready { }
+    MeshGeometry() : _ready { }
     {
     }
 
