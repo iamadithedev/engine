@@ -59,7 +59,7 @@ void Physics::add_debug(btIDebugDraw* debug)
     _world->setDebugDrawer(debug);
 }
 
-void Physics::debug()
+void Physics::compute_debug_geometry()
 {
     _world->debugDrawWorld();
     _world->getDebugDrawer()->flushLines(); // just for collision world

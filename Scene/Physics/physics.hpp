@@ -9,7 +9,8 @@ public:
 
     void init();
     void release();
-    void debug();
+
+    void compute_debug_geometry();
 
     void add_collision(int32_t index, btCollisionShape* shape, const vec3& position);
     void add_debug(btIDebugDraw* debug);
