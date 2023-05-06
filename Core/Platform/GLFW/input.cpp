@@ -8,8 +8,8 @@ namespace glfw
         return glfwGetMouseButton(((glfw::Window*)window)->handle(), button);
     }
 
-    bool Input::key_pressed(const base::Window* window, int32_t key) const
+    bool Input::key_pressed(const base::Window* window, input::Key key) const
     {
-        return glfwGetKey(((glfw::Window*)window)->handle(), key) == GLFW_PRESS;
+        return glfwGetKey(((glfw::Window*)window)->handle(), (int32_t)key) == GLFW_PRESS;
     }
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Base/input.hpp"
+#include "base/input.hpp"
 
 namespace glfw
 {
@@ -8,6 +8,6 @@ namespace glfw
     {
     public:
         bool mouse_pressed(const base::Window* window, int32_t button) const final;
-        bool key_pressed(const   base::Window* window, int32_t key)    const final;
+        bool key_pressed(const   base::Window* window, input::Key key) const final;
     };
 }

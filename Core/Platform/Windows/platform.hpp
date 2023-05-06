@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Base/platform.hpp"
+#include "base/platform.hpp"
 
 namespace windows
 {
