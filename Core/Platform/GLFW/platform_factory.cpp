@@ -1,6 +1,7 @@
 #include "platform_factory.hpp"
 #include "platform.hpp"
 #include "window.hpp"
+#include "input.hpp"
 
 namespace glfw
 {
@@ -14,5 +15,11 @@ namespace glfw
     {
         auto   window = std::make_unique<Window>(title, size);
         return window;
+    }
+
+    std::unique_ptr<base::Input> PlatformFactory::create_input()
+    {
+        auto   input = std::make_unique<Input>();
+        return input;
     }
 }
