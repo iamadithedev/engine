@@ -40,4 +40,9 @@ namespace glfw
     {
         glfwSwapInterval(1);
     }
+
+    bool Platform::init_context()
+    {
+        return gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    }
 }

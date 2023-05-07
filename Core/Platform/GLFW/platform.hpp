@@ -15,6 +15,8 @@ namespace glfw
 
         void vsync()   const final;
 
+        static bool init_context();
+
     private:
         int32_t _major;
         int32_t _minor;
