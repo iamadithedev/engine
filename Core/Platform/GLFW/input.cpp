@@ -12,4 +12,13 @@ namespace glfw
     {
         return glfwGetKey(((glfw::Window*)window)->handle(), (int32_t)key) == GLFW_PRESS;
     }
+
+    vec2 Input::mouse_position(const base::Window* window) const
+    {
+        vec2 position { };
+
+        glfwGetCursorPos(((glfw::Window*)window)->handle(), &position.x, &position.y);
+
+        return position;
+    }
 }
