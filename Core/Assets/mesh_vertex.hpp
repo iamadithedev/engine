@@ -2,6 +2,7 @@
 
 #include "vec3.hpp"
 #include "vec2.hpp"
+
 #include "rgb.hpp"
 
 namespace mesh_vertex
