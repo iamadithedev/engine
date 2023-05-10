@@ -1,25 +1,30 @@
 #include "mesh_importer.hpp"
 
-triangle_geometry MeshImporter::load(const std::string& file)
+std::vector<triangle_geometry> MeshImporter::load(const std::string& file)
 {
     Assimp::Importer  importer;
-    triangle_geometry geometry;
+    std::vector<triangle_geometry> geometries;
 
-    const aiScene* scene = importer.ReadFile(file, 0);
+    auto scene = importer.ReadFile(file, 0);
+    assert(scene != nullptr);
 
-    if (scene && scene->mRootNode)
+    const auto root = scene->mRootNode;
+    assert(root != nullptr);
+
+    for (int32_t n = 0; n < scene->mRootNode->mNumChildren; n++)
     {
-        const aiNode* node = scene->mRootNode->mChildren[0];
+        const auto node = scene->mRootNode->mChildren[n];
 
         for (uint32_t i = 0; i < node->mNumMeshes; i++)
         {
             const aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
 
-            geometry = load(mesh);
+            auto geometry = load(mesh);
+            geometries.push_back(geometry);
         }
     }
 
-    return geometry;
+    return geometries;
 }
 
 triangle_geometry MeshImporter::load(const aiMesh* mesh)
