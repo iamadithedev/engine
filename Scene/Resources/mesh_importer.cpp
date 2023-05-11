@@ -2,14 +2,15 @@
 
 std::vector<triangle_geometry> MeshImporter::load(const std::string& file)
 {
-    Assimp::Importer  importer;
-    std::vector<triangle_geometry> geometries;
+    Assimp::Importer importer;
 
     auto scene = importer.ReadFile(file, 0);
     assert(scene != nullptr);
 
     const auto root = scene->mRootNode;
     assert(root != nullptr);
+
+    std::vector<triangle_geometry> geometries;
 
     for (int32_t n = 0; n < scene->mRootNode->mNumChildren; n++)
     {
