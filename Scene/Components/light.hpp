@@ -3,7 +3,9 @@
 #include "vec3.hpp"
 #include "rgb.hpp"
 
-class Light
+#include "component.hpp"
+
+class Light final : public Component
 {
 public:
     Light(const vec3& position, const rgb& color);

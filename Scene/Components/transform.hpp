@@ -1,8 +1,9 @@
 #pragma once
 
 #include "vec3.hpp"
+#include "component.hpp"
 
-class Transform
+class Transform final : public Component
 {
 public:
     Transform();

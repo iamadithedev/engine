@@ -3,7 +3,9 @@
 #include "ray.hpp"
 #include "vec2.hpp"
 
-class Camera
+#include "component.hpp"
+
+class Camera final : public Component
 {
 public:
     enum class Type
