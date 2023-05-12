@@ -20,7 +20,7 @@ public:
         _ready = true;
     }
 
-    void add_vertex(const _vertex& vertex)
+    void add_vertex(const _vertex&  vertex)
     {
         _vertices.push_back(vertex);
     }
@@ -42,6 +42,8 @@ public:
 
     void reset()
     {
+         assert(_ready);
+
         _vertices.clear();
         _faces.clear();
 
