@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.hpp"
+#include "base/object.hpp"
 #include "base/window.hpp"
 
 namespace glfw

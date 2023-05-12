@@ -15,7 +15,6 @@ namespace base
         Object() : _handle { }
         {
         }
-
-        type _handle;
+        type       _handle;
     };
 }

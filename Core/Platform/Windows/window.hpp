@@ -1,7 +1,7 @@
 #pragma once
 
-#include "object.hpp"
-#include "Base/window.hpp"
+#include "base/object.hpp"
+#include "base/window.hpp"
 
 namespace windows
 {
