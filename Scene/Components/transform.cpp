@@ -17,10 +17,9 @@ Transform& Transform::rotate(const vec3& axes, float angle)
      return *this;
 }
 
-Transform& Transform::scale(const vec3& axes)
+void Transform::scale(const vec3& axes)
 {
     _matrix = glm::scale(_matrix, { axes.x, axes.y, axes.z });
-     return *this;
 }
 
 const glm::mat4& Transform::matrix() const
