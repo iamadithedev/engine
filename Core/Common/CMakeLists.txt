@@ -1,4 +1,4 @@
-project(Utils)
+project(Common)
 
 add_library(${PROJECT_NAME})
 
