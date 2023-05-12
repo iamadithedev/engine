@@ -1,15 +1,10 @@
 #pragma once
 
-class Object
+#include "base/object.hpp"
+
+class Object : public base::Object<uint32_t>
 {
 public:
     virtual void create()  = 0;
     virtual void destroy() = 0;
-
-    [[nodiscard]] uint32_t handle() const;
-
-protected:
-    uint32_t _handle;
-
-    Object();
 };
