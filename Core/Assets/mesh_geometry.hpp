@@ -42,8 +42,6 @@ public:
 
     void reset()
     {
-         assert(_ready);
-
         _vertices.clear();
         _faces.clear();
 
