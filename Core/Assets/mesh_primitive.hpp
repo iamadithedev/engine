@@ -1,9 +1,9 @@
 #pragma once
 
-template<int32_t _size>
+template<std::size_t _size>
 struct   mesh_primitive
 {
-    [[nodiscard]] int32_t size() const
+    [[nodiscard]] std::size_t size() const
     {
         return _size;
     }
