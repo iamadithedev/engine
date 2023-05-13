@@ -56,9 +56,10 @@ public:
         _ready = false;
     }
 
-private:
+protected:
     std::vector<_vertex>    _vertices;
     std::vector<_primitive> _faces;
 
+private:
     bool _ready;
 };

@@ -4,8 +4,14 @@
 #include "mesh_primitive.hpp"
 #include "mesh_geometry.hpp"
 
-using line     = mesh_primitive<2>;
-using triangle = mesh_primitive<3>;
+namespace primitive
+{
+    constexpr uint32_t line_count     = 2;
+    constexpr uint32_t triangle_count = 3;
 
-using line_geometry     = MeshGeometry<mesh_vertex::debug,   line>;
-using triangle_geometry = MeshGeometry<mesh_vertex::diffuse, triangle>;
+    using line     = mesh_primitive<primitive::line_count>;
+    using triangle = mesh_primitive<primitive::triangle_count>;
+}
+
+using line_geometry     = MeshGeometry<mesh_vertex::debug,   primitive::line>;
+using triangle_geometry = MeshGeometry<mesh_vertex::diffuse, primitive::triangle>;
