@@ -10,8 +10,17 @@ public:
     {
     }
 
-    void begin()
+    void begin(uint32_t vertices = 0, uint32_t faces = 0)
     {
+        if (vertices > 0 && faces > 0)
+        {
+            assert(_vertices.capacity() != vertices);
+            assert(_faces.capacity()    != faces);
+
+            _vertices.reserve(vertices);
+            _faces.reserve(faces);
+        }
+
         assert(!_ready);
     }
     void end()
