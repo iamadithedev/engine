@@ -11,10 +11,11 @@ std::vector<triangle_geometry> MeshImporter::load(const std::string& file)
     assert(root != nullptr);
 
     std::vector<triangle_geometry> geometries;
+    geometries.reserve(root->mNumChildren);
 
-    for (uint32_t i = 0; i < scene->mRootNode->mNumChildren; i++)
+    for (uint32_t i = 0; i < root->mNumChildren; i++)
     {
-        const auto node = scene->mRootNode->mChildren[i];
+        const auto node = root->mChildren[i];
 
         for (uint32_t j = 0; j < node->mNumMeshes; j++)
         {

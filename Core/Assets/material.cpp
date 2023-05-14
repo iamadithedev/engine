@@ -1,5 +1,10 @@
 #include "material.hpp"
 
+Material::Material()
+    : _diffuse { 1.0f, 1.0f, 1.0f }
+{
+}
+
 Material::Material(const rgb& diffuse)
     : _diffuse { diffuse }
 {

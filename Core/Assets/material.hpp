@@ -5,6 +5,7 @@
 class Material
 {
 public:
+             Material();
     explicit Material(const rgb& diffuse);
 
     void diffuse(const rgb& diffuse);
