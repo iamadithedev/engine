@@ -10,10 +10,10 @@ public:
     void create()  final;
     void destroy() final;
 
-    void source(const char* data) const;
+    void source(const std::vector<std::byte>& content);
+    void source(const char* content) const;
 
 private:
-    void compile() const;
     void status()  const;
 
     std::string _file;

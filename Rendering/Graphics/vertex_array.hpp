@@ -16,10 +16,10 @@ public:
     template<typename type>
     void init_attributes_of_type(const vertex_attributes& attributes) const
     {
-        for (auto& attribute : attributes)
+        for (auto& attrib : attributes)
         {
-            glVertexAttribPointer(attribute.index, attribute.size, GL_FLOAT, GL_FALSE, sizeof(type), reinterpret_cast<const void*>(attribute.offset));
-            glEnableVertexAttribArray(attribute.index);
+            glVertexAttribPointer(attrib.index, attrib.size, attrib.type, GL_FALSE, sizeof(type), reinterpret_cast<const void*>(attrib.offset));
+            glEnableVertexAttribArray(attrib.index);
         }
     }
 };

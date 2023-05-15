@@ -2,7 +2,7 @@
 
 void VertexArray::create()
 {
-    glGenVertexArrays(1, &_handle);
+    glCreateVertexArrays(1, &_handle);
 }
 
 void VertexArray::destroy()

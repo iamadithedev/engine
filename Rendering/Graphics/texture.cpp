@@ -7,7 +7,7 @@ Texture::Texture(uint32_t target)
 
 void Texture::create()
 {
-    glGenTextures(1, &_handle);
+    glCreateTextures(_target, 1, &_handle);
 }
 
 void Texture::destroy()

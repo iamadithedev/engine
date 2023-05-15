@@ -2,13 +2,6 @@
 
 namespace glfw
 {
-    Platform::Platform(int32_t major, int32_t minor, int32_t samples)
-        : _major   { major }
-        , _minor   { minor }
-        , _samples { samples }
-    {
-    }
-
     bool Platform::init() const
     {
         if (glfwInit() == GLFW_FALSE)
@@ -16,10 +9,10 @@ namespace glfw
             return false;
         }
 
-        glfwWindowHint(GLFW_SAMPLES, _samples);
+        glfwWindowHint(GLFW_SAMPLES, 4);
 
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, _major);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, _minor);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // TODO remove this, should be enable by default
 

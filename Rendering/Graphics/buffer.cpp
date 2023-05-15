@@ -9,7 +9,7 @@ Buffer::Buffer(uint32_t target, uint32_t usage)
 
 void Buffer::create()
 {
-    glGenBuffers(1, &_handle);
+    glCreateBuffers(1, &_handle);
 }
 
 void Buffer::destroy()

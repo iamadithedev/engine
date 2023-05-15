@@ -5,14 +5,14 @@ RenderPass::RenderPass(uint32_t flags)
 {
 }
 
-void RenderPass::viewport(int32_t x, int32_t y, int32_t width, int32_t height) const
+void RenderPass::viewport(const vec2& position, const math::size& size) const
 {
-    glViewport(x, y, width, height);
+    glViewport((int32_t)position.x, (int32_t)position.y, size.width, size.height);
 }
 
-void RenderPass::clear_color(float r, float g, float b, float a) const
+void RenderPass::clear_color(const rgb& color) const
 {
-    glClearColor(r, g, b, a);
+    glClearColor(color.r, color.g, color.b, 1.0f);
 }
 
 void RenderPass::clear_buffers() const

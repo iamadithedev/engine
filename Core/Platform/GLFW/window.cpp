@@ -3,7 +3,7 @@
 
 namespace glfw
 {
-    Window::Window(const std::string& title, const window_size& size)
+    Window::Window(const std::string& title, const math::size& size)
         : base::Window { title, size }
     {
     }

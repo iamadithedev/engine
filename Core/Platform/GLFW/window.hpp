@@ -9,7 +9,7 @@ namespace glfw
                          public base::Window
     {
     public:
-        Window(const std::string& title, const window_size& size);
+        Window(const std::string& title, const math::size& size);
 
         bool create()        final;
         void update()  const final;

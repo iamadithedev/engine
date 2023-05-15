@@ -1,14 +1,18 @@
 #pragma once
 
+#include "vec2.hpp"
+#include "size.hpp"
+#include "rgb.hpp"
+
 class RenderPass
 {
 public:
     explicit RenderPass(uint32_t flags);
 
-    void viewport(int32_t x, int32_t y, int32_t width, int32_t height) const;
+    void viewport(const vec2& position, const math::size& size) const;
 
-    void clear_color(float r, float g, float b, float a = 1.0f) const;
-    void clear_buffers()                                        const;
+    void clear_color(const rgb& color) const;
+    void clear_buffers()               const;
 
     void enable(uint32_t option) const;
 

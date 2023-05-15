@@ -18,17 +18,17 @@ void Shader::destroy()
     glDeleteShader(_handle);
 }
 
-void Shader::source(const char* data) const
+void Shader::source(const std::vector<std::byte>& content)
 {
-    assert(data != nullptr);
-
-    glShaderSource(_handle, 1, &data, nullptr);
-
-    compile();
+    glShaderBinary(1, &_handle, GL_SHADER_BINARY_FORMAT_SPIR_V, content.data(), static_cast<int32_t>(content.size()));
+    glSpecializeShader(_handle, "main", 0, nullptr, nullptr);
 }
 
-void Shader::compile() const
+void Shader::source(const char* content) const
 {
+    assert(content != nullptr);
+
+    glShaderSource(_handle, 1, &content, nullptr);
     glCompileShader(_handle);
 
     status();
