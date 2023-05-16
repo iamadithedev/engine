@@ -45,7 +45,7 @@ void Physics::add_collision(int32_t index, btCollisionShape* shape, const vec3& 
     transform.setIdentity();
     transform.setOrigin({ position.x, position.y, position.z });
 
-    auto object = new btCollisionObject();
+    auto object = new btCollisionObject(); // TODO use a pool for this?
 
     object->setCollisionShape(shape);
     object->setWorldTransform(transform);
