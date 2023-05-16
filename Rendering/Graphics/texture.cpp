@@ -29,11 +29,6 @@ void Texture::bind() const
     glBindTexture(_target, _handle);
 }
 
-void Texture::parameter(uint32_t param, int32_t value) const
-{
-    glTexParameteri(_target, param, value);
-}
-
 void Texture::generate_mipmap() const
 {
     glGenerateMipmap(_target);
