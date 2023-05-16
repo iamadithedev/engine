@@ -51,7 +51,7 @@ public:
         return _faces;
     }
 
-    [[nodiscard]] mesh_part get_mesh_part() const
+    [[nodiscard]] mesh_part get_submesh() const
     {
         assert(_ready);
         return { 0, static_cast<int32_t>(_faces[0].size() * _faces.size()) };
