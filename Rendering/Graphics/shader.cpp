@@ -1,37 +1,41 @@
 #include "shader.hpp"
 
-Shader::Shader(std::string file, uint32_t type)
-    : _file { std::move(file) }
-    , _type { type }
-{
-}
-
 void Shader::create()
 {
-    _handle = glCreateShader(_type);
+    _handle = glCreateProgram();
 }
 
 void Shader::destroy()
 {
-    assert(glIsShader(_handle));
+    assert(glIsProgram(_handle));
 
-    glDeleteShader(_handle);
+    glDeleteProgram(_handle);
 }
 
-void Shader::source(const std::vector<std::byte>& content)
+void Shader::bind() const
 {
-    glShaderBinary(1, &_handle, GL_SHADER_BINARY_FORMAT_SPIR_V, content.data(), static_cast<int32_t>(content.size()));
-    glSpecializeShader(_handle, "main", 0, nullptr, nullptr);
+    glUseProgram(_handle);
 }
 
-void Shader::source(const char* content) const
+void Shader::link() const
 {
-    assert(content != nullptr);
-
-    glShaderSource(_handle, 1, &content, nullptr);
-    glCompileShader(_handle);
+    glLinkProgram(_handle);
 
     status();
+}
+
+void Shader::attach(const ShaderStage* shader) const
+{
+    assert(shader != nullptr);
+
+    glAttachShader(_handle, shader->handle());
+}
+
+void Shader::detach(const ShaderStage* shader) const
+{
+    assert(shader != nullptr);
+
+    glDetachShader(_handle, shader->handle());
 }
 
 void Shader::status() const
@@ -39,12 +43,12 @@ void Shader::status() const
     int  success;
     char info[512];
 
-    glGetShaderiv(_handle, GL_COMPILE_STATUS, &success);
+    glGetProgramiv(_handle, GL_LINK_STATUS, &success);
 
     if (!success)
     {
-        glGetShaderInfoLog(_handle, 512, nullptr, info);
+        glGetProgramInfoLog(_handle, 512, nullptr, info);
 
-        std::cerr << std::format("shader compilation failed - {} \n{}", _file, info);
+        std::cerr << std::format("shader linking failed \n{}", info);
     }
 }
