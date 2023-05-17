@@ -8,7 +8,7 @@ public:
     void init();
     void release();
 
-    template <typename Resource>
+    template   <typename Resource>
     Resource* load(const std::string& file)
     {
         auto   container = _containers.at(typeid(Resource).hash_code());
