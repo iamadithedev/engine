@@ -2,22 +2,27 @@
 
 #include "file.hpp"
 
-Shader* ShaderContainer::load(const std::string& filename, const std::string& path)
+void ShaderContainer::init()
 {
-    const auto& root   = YAML::LoadFile(path + filename);
-    const auto& stages = root["stages"];
+    _types = { GL_VERTEX_SHADER, GL_FRAGMENT_SHADER };
+}
+
+Shader* ShaderContainer::load(const std::string& file, const std::string& path)
+{
+    const auto& root_node   = YAML::LoadFile(path + file);
+    const auto& stages_node = root_node["stages"];
 
     auto shader = new Shader();
     shader->create();
 
-    for (const auto& stage : stages)
+    for (const auto& stage_node : stages_node)
     {
-        const auto& file = stage["file"].as<std::string>();
-        const auto  type = stage["type"].as<int32_t>();
+        const auto& file_value = stage_node["file"].as<std::string>();
+        const auto  type_value = stage_node["type"].as<int32_t>();
 
-        auto shader_stage_source = File::read<std::byte>(path + file);
+        auto shader_stage_source = File::read<std::byte>(path + file_value);
 
-        ShaderStage  shader_stage { file, (uint32_t)(type == 0 ? GL_VERTEX_SHADER : GL_FRAGMENT_SHADER) };
+        ShaderStage  shader_stage { file_value, _types[type_value] };
         shader_stage.create();
         shader_stage.source(shader_stage_source);
 

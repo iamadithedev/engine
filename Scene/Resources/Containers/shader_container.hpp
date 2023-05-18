@@ -6,6 +6,11 @@
 class ShaderContainer final : public ResourceContainer<Shader>
 {
 public:
-    Shader* load(const std::string& filename, const std::string& path) final;
+    void init();
+
+    Shader* load(const std::string& file, const std::string& path) final;
     void  unload() final;
+
+private:
+    std::array<uint32_t, 2> _types;
 };

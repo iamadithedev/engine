@@ -6,7 +6,7 @@ template <typename Resource>
 class ResourceContainer : public Container
 {
 public:
-    Resource* get_at_index(uint32_t index)
+    const Resource* get_at_index(uint32_t index)
     {
         return _resources[index];
     }
