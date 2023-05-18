@@ -2,10 +2,10 @@
 
 #include "ray.hpp"
 
-class Physics
+class PhysicsWorld
 {
 public:
-    Physics();
+    PhysicsWorld();
 
     void init();
     void release();
