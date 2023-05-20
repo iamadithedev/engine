@@ -19,7 +19,7 @@ public:
         auto   size = stream.tellg();
         assert(size > 0);
 
-        std::vector<type> content(size);
+        std::vector<type> content(size); // TODO maybe this will work faster with reserve?
 
         stream.seekg(0, std::ios::beg);
         stream.read(reinterpret_cast<char*>(content.data()), size);

@@ -5,7 +5,7 @@
 class ResourceManager
 {
 public:
-    void init(const std::string& path);
+    void init(const std::string& path = "");
     void release();
 
     template   <typename Resource>
