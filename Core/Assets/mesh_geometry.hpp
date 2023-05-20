@@ -6,7 +6,7 @@ template <typename _vertex, typename _primitive>
 class MeshGeometry
 {
 public:
-    MeshGeometry() : _ready { }
+    MeshGeometry() noexcept : _ready { }
     {
     }
 
@@ -23,7 +23,7 @@ public:
 
         assert(!_ready);
     }
-    void end()
+    void end() noexcept
     {
         assert(!_vertices.empty());
         assert(!_faces.empty());
@@ -54,7 +54,7 @@ public:
     [[nodiscard]] mesh_part get_submesh() const
     {
         assert(_ready);
-        return { 0, static_cast<int32_t>(_faces[0].size() * _faces.size()) };
+        return { 0, static_cast<int32_t>(_faces.front().size() * _faces.size())};
     }
 
     void reset()

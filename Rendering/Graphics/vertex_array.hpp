@@ -14,7 +14,7 @@ public:
     void bind()    const;
 
     template<typename type>
-    void init_attributes_of_type(const vertex_attributes& attributes) const
+    void init_attributes_of_type(const vertex_attributes& attributes) const noexcept
     {
         for (auto& attrib : attributes)
         {

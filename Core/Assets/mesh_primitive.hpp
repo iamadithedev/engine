@@ -10,7 +10,7 @@ struct   mesh_primitive
             indices[i] += offset;
         }
     }
-    [[nodiscard]] std::size_t size() const
+    [[nodiscard]] std::size_t size() const noexcept
     {
         return _size;
     }

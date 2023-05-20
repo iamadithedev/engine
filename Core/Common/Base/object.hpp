@@ -12,7 +12,7 @@ namespace base
         }
 
     protected:
-        Object() : _handle { }
+        Object() noexcept : _handle { }
         {
         }
         type       _handle;
