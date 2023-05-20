@@ -13,4 +13,5 @@ public:
 
 private:
     std::array<uint32_t, 2> _types;
+    std::size_t             _hash;
 };

@@ -5,12 +5,15 @@
 void ShaderContainer::init()
 {
     _types = { GL_VERTEX_SHADER, GL_FRAGMENT_SHADER };
+    _hash  =   typeid(Shader).hash_code();
 }
 
 Shader* ShaderContainer::load(const std::string& file, const std::string& path)
 {
     const auto& root_node   = YAML::LoadFile(path + file);
     const auto& stages_node = root_node["stages"];
+          auto  type_value  = root_node["type"].as<std::size_t>();
+          assert(type_value == _hash);
 
     auto shader = new Shader(); // TODO here from a pool? is container a pool?
          shader->create();
@@ -18,7 +21,7 @@ Shader* ShaderContainer::load(const std::string& file, const std::string& path)
     for (const auto& stage_node : stages_node)
     {
         const auto& file_value = stage_node["file"].as<std::string>();
-        const auto  type_value = stage_node["type"].as<int32_t>();
+                    type_value = stage_node["type"].as<int32_t>();
 
         auto stage_source = File::read<std::byte>(path + file_value);
 
