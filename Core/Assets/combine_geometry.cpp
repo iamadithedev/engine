@@ -37,7 +37,7 @@ void CombineGeometry::add_submesh(const mesh_part& submesh)
     _submeshes.push_back(submesh);
 }
 
-const std::vector<mesh_part>& CombineGeometry::submeshes() const
+const mesh_part& CombineGeometry::operator[](int32_t index)
 {
-    return _submeshes;
+    return _submeshes[index];
 }
