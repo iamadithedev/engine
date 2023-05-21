@@ -31,7 +31,7 @@ Shader* ShaderContainer::load(const std::string& file, const std::string& path)
         shader_stage.create();
 
         binary_value ? shader_stage.source(File::read<std::byte>(filepath))
-                     : shader_stage.source(File::read<char>(filepath));;
+                     : shader_stage.source(File::read<char>(filepath));
 
         shader->attach(&shader_stage); // TODO keep a reference somewhere
     }
