@@ -51,6 +51,7 @@ void Buffer::sub_data(const BufferData& data, int32_t offset) const
 
 void Buffer::bind_at_location(uint32_t index)
 {
+    assert(_handle != 0);
     assert(_binded == false);
     assert(_target == GL_UNIFORM_BUFFER);
 
