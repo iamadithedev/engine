@@ -6,6 +6,8 @@ struct aiMesh;
 class  MeshImporter
 {
 public:
+    MeshImporter() = delete;
+
     static std::vector<triangle_geometry> load(const std::string& file);
 
 private:

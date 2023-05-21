@@ -3,6 +3,8 @@
 class File
 {
 public:
+    File() = delete;
+
     template<typename  type>
     static std::vector<type> read(const std::string& file)
     {
