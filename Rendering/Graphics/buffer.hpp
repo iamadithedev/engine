@@ -14,12 +14,15 @@ public:
     void     data(const BufferData& data);
     void sub_data(const BufferData& data, int32_t offset = 0) const;
 
-    void bind_at_location(uint32_t index) const;
-    void bind()                           const;
+    void bind_at_location(uint32_t index);
+    void bind();
 
 private:
     uint32_t _target;
     uint32_t _usage;
 
+    #ifndef NDEBUG
     bool _initialized;
+    bool _binded;
+    #endif
 };
