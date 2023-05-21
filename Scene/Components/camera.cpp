@@ -22,10 +22,14 @@ const glm::mat4& Camera::projection() const
 
 void Camera::resize(float width, float height)
 {
-    _viewport.z = width;
-    _viewport.w = height;
+    assert(_viewport.z != width ||
+           _viewport.w != height);
 
-    _type == Type::Perspective ? compute_perspective() : compute_ortho();
+           _viewport.z = width;
+           _viewport.w = height;
+
+    _type == Type::Perspective ? compute_perspective() :
+                                 compute_ortho();
 }
 
 void Camera::field_of_view(float value)
