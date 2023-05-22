@@ -1,6 +1,6 @@
 #include "mesh_importer.hpp"
 
-std::vector<TriangleGeometry> MeshImporter::load(const std::string& file)
+std::vector<geometry::triangle> MeshImporter::load(const std::string& file)
 {
     Assimp::Importer importer;
 
@@ -10,7 +10,7 @@ std::vector<TriangleGeometry> MeshImporter::load(const std::string& file)
     const auto root = scene->mRootNode;
     assert(root != nullptr);
 
-    std::vector<TriangleGeometry> geometries;
+    std::vector<geometry::triangle> geometries;
     geometries.reserve(root->mNumChildren);
 
     for (uint32_t i = 0; i < root->mNumChildren; i++)
@@ -29,9 +29,9 @@ std::vector<TriangleGeometry> MeshImporter::load(const std::string& file)
     return geometries;
 }
 
-TriangleGeometry MeshImporter::load(const aiMesh* mesh)
+geometry::triangle MeshImporter::load(const aiMesh* mesh)
 {
-    TriangleGeometry geometry;
+    geometry::triangle geometry;
     geometry.begin(mesh->mNumVertices, mesh->mNumFaces);
 
     for (uint32_t i = 0; i < mesh->mNumVertices; i++)

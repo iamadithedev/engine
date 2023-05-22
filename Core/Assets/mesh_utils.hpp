@@ -13,6 +13,9 @@ namespace primitive
     using triangle = mesh_primitive<primitive::triangle_count>;
 }
 
-using LineGeometry     = MeshGeometry<mesh_vertex::debug,   primitive::line>;
-using TriangleGeometry = MeshGeometry<mesh_vertex::diffuse, primitive::triangle>;
-using SpriteGeometry   = MeshGeometry<mesh_vertex::sprite,  primitive::triangle>;
+namespace geometry
+{
+    using line     = MeshGeometry<mesh_vertex::debug,   primitive::line>;
+    using sprite   = MeshGeometry<mesh_vertex::sprite,  primitive::triangle>;
+    using triangle = MeshGeometry<mesh_vertex::diffuse, primitive::triangle>;
+}

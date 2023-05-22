@@ -1,6 +1,6 @@
 #include "combine_geometry.hpp"
 
-void CombineGeometry::combine(const std::vector<TriangleGeometry>& geometries)
+void CombineGeometry::combine(const std::vector<geometry::triangle>& geometries)
 {
     uint32_t size   = 0;
     uint32_t offset = 0;
