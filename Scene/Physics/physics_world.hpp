@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ray.hpp"
+#include "ray_result.hpp"
 
 class PhysicsWorld
 {
@@ -15,7 +16,7 @@ public:
     void add_collision(int32_t index, btCollisionShape* shape, const vec3& position);
     void add_debug(btIDebugDraw* debug);
 
-    [[nodiscard]] btCollisionWorld::ClosestRayResultCallback cast(const ray& ray, float distance) const;
+    [[nodiscard]] RayResult cast(const ray& ray, float distance) const;
 
 private:
     btCollisionConfiguration* _config;
