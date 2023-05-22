@@ -2,7 +2,8 @@
 
 #include "mesh_vertex.hpp"
 #include "mesh_primitive.hpp"
-#include "mesh_geometry.hpp"
+
+#include "geometries/mesh_geometry.hpp"
 
 namespace primitive
 {
