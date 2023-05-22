@@ -1,4 +1,5 @@
 #include "physics_world.hpp"
+#include "physics_utils.hpp"
 
 PhysicsWorld::PhysicsWorld()
     : _config     { }
@@ -21,8 +22,10 @@ void PhysicsWorld::init()
 void PhysicsWorld::release()
 {
     delete _world;
+
     delete _broadphase;
     delete _dispatcher;
+
     delete _config;
 }
 
@@ -30,8 +33,8 @@ RayResult PhysicsWorld::cast(const ray& ray, float distance) const
 {
     RayResult result;
 
-    btVector3 origin    { ray.origin.x,    ray.origin.y,    ray.origin.z };
-    btVector3 direction { ray.direction.x, ray.direction.y, ray.direction.z };
+    btVector3 origin    = PhysicsUtils::get_vector3(ray.origin);
+    btVector3 direction = PhysicsUtils::get_vector3(ray.direction);
 
     btVector3 target = origin + direction * distance;
     btCollisionWorld::ClosestRayResultCallback hit { origin, target };
@@ -48,14 +51,10 @@ RayResult PhysicsWorld::cast(const ray& ray, float distance) const
 
 void PhysicsWorld::add_collision(int32_t index, btCollisionShape* shape, const vec3& position)
 {
-    btTransform transform;
-    transform.setIdentity();
-    transform.setOrigin({ position.x, position.y, position.z });
-
     auto object = new btCollisionObject(); // TODO use a pool for this?
 
     object->setCollisionShape(shape);
-    object->setWorldTransform(transform);
+    object->setWorldTransform(PhysicsUtils::get_transform(position));
     object->setUserIndex(index);
 
     _world->addCollisionObject(object);
@@ -66,8 +65,8 @@ void PhysicsWorld::add_debug(btIDebugDraw* debug)
     _world->setDebugDrawer(debug);
 }
 
-void PhysicsWorld::compute_debug_geometry()
+void PhysicsWorld::compute_debug_geometry() const
 {
     _world->debugDrawWorld();
-    _world->getDebugDrawer()->flushLines(); // just for collision world
+    _world->getDebugDrawer()->flushLines(); // TODO just for collision world
 }
