@@ -2,6 +2,8 @@
 
 void CombineGeometry::combine(const std::vector<geometry::triangle>& geometries)
 {
+    _submeshes.reserve(geometries.size());
+
     uint32_t size   = 0;
     uint32_t offset = 0;
 
@@ -23,7 +25,7 @@ void CombineGeometry::combine(const std::vector<geometry::triangle>& geometries)
                  add_face(face);
         }
                         auto count = static_cast<int32_t>(faces.size() * primitive::triangle_count);
-        add_submesh({ static_cast<uint32_t>(offset * sizeof(uint32_t)), count });
+        add_submesh({ static_cast<uint32_t>(offset      * sizeof(uint32_t)),  count });
 
         size   += vertices.size();
         offset += count;
