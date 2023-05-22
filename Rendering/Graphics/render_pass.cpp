@@ -24,3 +24,8 @@ void RenderPass::enable(uint32_t option) const
 {
     glEnable(option);
 }
+
+void RenderPass::blend() const
+{
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}

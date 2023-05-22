@@ -10,6 +10,7 @@ public:
     explicit RenderPass(uint32_t flags);
 
     void viewport(const vec2& position, const math::size& size) const;
+    void blend()  const;
 
     void clear_color(const rgb& color) const;
     void clear_buffers()               const;
