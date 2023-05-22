@@ -8,8 +8,8 @@ class  MeshImporter
 public:
     MeshImporter() = delete;
 
-    static std::vector<triangle_geometry> load(const std::string& file);
+    static std::vector<TriangleGeometry> load(const std::string& file);
 
 private:
-    static triangle_geometry load(const aiMesh* mesh);
+    static TriangleGeometry load(const aiMesh* mesh);
 };

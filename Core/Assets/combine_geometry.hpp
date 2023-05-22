@@ -2,10 +2,10 @@
 
 #include "mesh_utils.hpp"
 
-class CombineGeometry final : public triangle_geometry
+class CombineGeometry final : public TriangleGeometry
 {
 public:
-    void  combine(const std::vector<triangle_geometry>& geometries);
+    void  combine(const std::vector<TriangleGeometry>& geometries);
     const mesh_part& operator[](int32_t index);
 
 private:
