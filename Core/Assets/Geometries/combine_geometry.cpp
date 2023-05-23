@@ -2,9 +2,12 @@
 
 void CombineGeometry::combine(const std::vector<geometry::triangle>& geometries)
 {
-    begin();
-
     _submeshes.reserve(geometries.size());
+
+    uint32_t index  { };
+    uint32_t offset { };
+
+    begin();
 
     for (auto& geometry : geometries)
     {
@@ -16,16 +19,16 @@ void CombineGeometry::combine(const std::vector<geometry::triangle>& geometries)
         }
 
         for (auto face : faces) {
-            face.add_offset(_index);
+            face.add_offset(index);
                  add_face(face);
         }
 
         const int32_t count = static_cast<int32_t>(faces.size()) * primitive::triangle_count;
 
-        add_submesh({ _offset * static_cast<uint32_t>(sizeof(uint32_t)), count });
+        add_submesh({offset * static_cast<uint32_t>(sizeof(uint32_t)), count });
 
-        _offset += static_cast<uint32_t>(count);
-        _index  += vertices.size();
+        offset += static_cast<uint32_t>(count);
+        index  += vertices.size();
     }
 
     end();
