@@ -7,8 +7,9 @@
 
 namespace primitive
 {
-    constexpr uint32_t line_count     = 2;
-    constexpr uint32_t triangle_count = 3;
+    constexpr int32_t line_count     = 2;
+    constexpr int32_t triangle_count = 3;
+    constexpr int32_t sprite_count   = 6;
 
     using line     = mesh_primitive<primitive::line_count>;
     using triangle = mesh_primitive<primitive::triangle_count>;

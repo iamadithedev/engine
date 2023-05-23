@@ -12,4 +12,7 @@ private:
     void add_submesh(const mesh_part& submesh);
 
     std::vector<mesh_part> _submeshes;
+
+    uint32_t _index;
+    uint32_t _offset;
 };

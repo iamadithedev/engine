@@ -3,10 +3,9 @@
 template<std::size_t _size>
 struct   mesh_primitive
 {
-    void  add_offset(uint32_t offset)
+    void add_offset(uint32_t offset) noexcept
     {
-        for (std::size_t i = 0; i < _size; i++)
-        {
+        for (std::size_t i = 0; i < _size; i++) {
             indices[i] += offset;
         }
     }
