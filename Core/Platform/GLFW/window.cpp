@@ -10,12 +10,12 @@ namespace glfw
 
     bool Window::create()
     {
-        _handle  = glfwCreateWindow(_size.width, _size.height, _title.c_str(), nullptr);
-                   glfwMakeContextCurrent(_handle);
+        _init_flags();
 
-        glfwSetWindowUserPointer(_handle,   this);
-        glfwSetWindowSizeCallback(_handle,  WindowCallbacks::on_size);
-        glfwSetWindowCloseCallback(_handle, WindowCallbacks::on_close);
+        _handle = glfwCreateWindow(_size.width, _size.height, _title.c_str(), nullptr);
+                  glfwMakeContextCurrent(_handle);
+
+        _init_callbacks();
 
         return _handle != nullptr;
     }
@@ -28,5 +28,19 @@ namespace glfw
     void Window::destroy() const
     {
         glfwDestroyWindow(_handle);
+    }
+
+    void Window::_init_flags()
+    {
+        if (_fixed_size) {
+            glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+        }
+    }
+
+    void Window::_init_callbacks()
+    {
+        glfwSetWindowUserPointer(_handle,   this);
+        glfwSetWindowSizeCallback(_handle,  WindowCallbacks::on_size);
+        glfwSetWindowCloseCallback(_handle, WindowCallbacks::on_close);
     }
 }

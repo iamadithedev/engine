@@ -5,13 +5,19 @@ namespace base
     Window::Window(std::string title, const math::size& size)
         : _title  { std::move(title) }
         , _size   { size }
-        , _closed { }
+        , _fixed_size { }
+        , _closed     { }
     {
     }
 
     void Window::resize(const math::size& size)
     {
         _size = size;
+    }
+
+    void Window::fixed_size()
+    {
+        _fixed_size = true;
     }
 
     void Window::close()
@@ -27,5 +33,10 @@ namespace base
     bool Window::closed() const
     {
         return _closed;
+    }
+
+    bool Window::fixed_size() const
+    {
+        return _fixed_size;
     }
 }

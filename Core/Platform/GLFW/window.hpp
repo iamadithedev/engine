@@ -14,5 +14,9 @@ namespace glfw
         bool create()        final;
         void update()  const final;
         void destroy() const final;
+
+    private:
+        void _init_flags();
+        void _init_callbacks();
     };
 }

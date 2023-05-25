@@ -16,16 +16,18 @@ namespace base
         virtual void destroy() const = 0;
 
         void resize(const math::size& size);
+        void fixed_size();
         void close();
 
         [[nodiscard]] const math::size& size() const;
-        [[nodiscard]] bool            closed() const;
+        [[nodiscard]] bool fixed_size() const;
+        [[nodiscard]] bool closed()     const;
 
     protected:
         std::string _title;
         math::size  _size;
 
-    private:
+        bool _fixed_size;
         bool _closed;
     };
 }

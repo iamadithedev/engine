@@ -6,6 +6,17 @@ SpriteGeometry::SpriteGeometry()
 {
 }
 
+void SpriteGeometry::add_sprite(float width, float height, const vec2& pivot, const vec2& min, const vec2& max)
+{
+    assert(pivot.x >= 0.0f && pivot.x <= 1.0f);
+    assert(pivot.y >= 0.0f && pivot.y <= 1.0f);
+
+    const float half_w = width  * pivot.x;
+    const float half_h = height * pivot.y;
+
+    add_sprite(half_w, half_h, min, max);
+}
+
 void SpriteGeometry::add_sprite(float half_w, float half_h, const vec2& min, const vec2& max)
 {
     const uint32_t index_0 = _offset++; const uint32_t index_1 = _offset++;
